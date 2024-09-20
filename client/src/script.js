@@ -1,9 +1,4 @@
-// Create a new EventSource
-const source = new EventSource(
-  "https://cors-anywhere.herokuapp.com/https://api.thecatdoor.com/sse/v1/events"
-);
-
-//{"event":"pepito","type":"in","time":1725714575,"img":"https://storage.thecatdoor.com/assets/1725714575-in-799154526.jpg"}
+const source = new EventSource("http://localhost:3000/sse-proxy");
 
 const lastUpdate = document.getElementById("lastUpdate");
 const pepitoImg = document.getElementById("pepitoImg");
@@ -14,12 +9,12 @@ const parseTime = (time) => {
 
 const handleHeartbeat = (payload) => {
   console.log("Heartbeat received");
-
+  pepitoImg.src = payload.img;
   lastUpdate.innerHTML = `Ultima actualizacion: ${parseTime(payload.time)}`;
 };
 
 const handlePepito = (event) => {
-  console.log("Pepito received");
+  console.log("Pepito received", event);
 
   pepitoImg.src = event.img;
   lastUpdate.innerHTML = `Ultima actualizacion: ${parseTime(event.time)}`;
