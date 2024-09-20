@@ -28,7 +28,7 @@ const handlePepito = (event) => {
 source.onmessage = function (event) {
   const payload = JSON.parse(event.data);
 
-  switch (payload.type) {
+  switch (payload.event) {
     case "heartbeat":
       handleHeartbeat(payload);
       break;
