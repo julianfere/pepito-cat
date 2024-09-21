@@ -1,4 +1,4 @@
-const source = new EventSource("http://localhost:3000/sse-proxy");
+const source = new EventSource("https://fere.com.ar/sse-proxy");
 
 const lastUpdate = document.getElementById("lastUpdate");
 const pepitoImg = document.getElementById("pepitoImg");
